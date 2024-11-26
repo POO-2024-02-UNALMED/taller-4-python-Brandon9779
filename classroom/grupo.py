@@ -9,8 +9,8 @@ class Grupo:
         self.listadoAlumnos = estudiantes if estudiantes else []
 
     def listadoAsignaturas(self, **kwargs):
-        for x in kwargs.values():
-            self._asignaturas.append(Asignatura(x, None))
+        for nombre_asignatura in kwargs.values():
+            self._asignaturas.append(Asignatura(nombre_asignatura, None))
 
     def agregarAlumno(self, alumno, *args):
         if isinstance(alumno, str):
@@ -19,11 +19,9 @@ class Grupo:
             if isinstance(extra_alumnos, list):
                 self.listadoAlumnos.extend(extra_alumnos)
 
-    
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
 
     def __str__(self):
         return f"Grupo de estudiantes: {self._grupo}"
-
