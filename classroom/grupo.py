@@ -19,10 +19,6 @@ class Grupo:
             if isinstance(extra_alumnos, list):
                 self.listadoAlumnos.extend(extra_alumnos)
 
-    def agregarAlumno(self, alumno, otrosAlumnos=None):
-        self.listadoAlumnos.append(alumno)
-        if otrosAlumnos:
-            self.listadoAlumnos.extend(otrosAlumnos)
     
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
