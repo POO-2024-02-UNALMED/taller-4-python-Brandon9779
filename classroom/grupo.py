@@ -21,7 +21,7 @@ class Grupo:
             self.listadoAlumnos.extend(alumno)
 
     @classmethod
-    def asignarNombre(cls, nombre="Grado 10"):
+    def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
 
     def __str__(self):
