@@ -1,3 +1,4 @@
+import re
 from classroom.asignatura import Asignatura
 
 class Grupo:
@@ -15,13 +16,19 @@ class Grupo:
     def agregarAlumno(self, alumno, otrosAlumnos=None):
         if isinstance(alumno, str):
             self.listadoAlumnos.append(alumno)
+        
         if otrosAlumnos and isinstance(otrosAlumnos, list):
             self.listadoAlumnos.extend(otrosAlumnos)
-        self.listadoAlumnos.sort()
+
+        self.listadoAlumnos.sort(key=self._extract_number)
+
+    def _extract_number(self, alumno):
+        match = re.search(r'(\d+)$', alumno)
+        return int(match.group(1)) if match else 0
 
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
 
     def __str__(self):
-        return f"Grupo de estudiantes: {self._grupo}, Alumnos: {', '.join(self.listadoAlumnos)}"
+        return f"Grupo de estudiantes: {self._grupo}"
