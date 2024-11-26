@@ -19,21 +19,10 @@ class Grupo:
             if isinstance(extra_alumnos, list):
                 self.listadoAlumnos.extend(extra_alumnos)
 
-    def agregarGrupo(self, grupo, asignaturas=None, alumnos=None, *args):
-        self._grupo = grupo
-        if asignaturas:
-           self._asignaturas.extend(asignaturas)
-        if alumnos:
-           if isinstance(alumnos, str):
-              self.listadoAlumnos.append(alumnos)
-           elif isinstance(alumnos, list):
-              self.listadoAlumnos.extend(alumnos)
-        for extra in args:
-            if isinstance(extra, str):
-              self.listadoAlumnos.append(extra)
-            elif isinstance(extra, list):
-              self.listadoAlumnos.extend(extra)
-        self.listadoAlumnos = list(dict.fromkeys(self.listadoAlumnos))
+    def agregarAlumno(self, alumno, otrosAlumnos=None):
+        self.listadoAlumnos.append(alumno)
+        if otrosAlumnos:
+            self.listadoAlumnos.extend(otrosAlumnos)
     
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
