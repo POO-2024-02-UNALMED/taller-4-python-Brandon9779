@@ -22,7 +22,8 @@ class Grupo:
 
     def agregarGrupo(self, grupo):
         if isinstance(grupo, Grupo):
-            self.grupos_agregados.append(grupo)
+            self.listadoAlumnos.extend(grupo.listadoAlumnos)
+            self._asignaturas.extend(grupo._asignaturas)
         else:
             print("El objeto proporcionado no es una instancia de Grupo.")
 
