@@ -17,6 +17,9 @@ class Grupo:
             lista = []
         if isinstance(alumno, str):
             self.listadoAlumnos.append(alumno)
+        elif isinstance(alumno, str) and isinstance(lista, list):
+            self.listadoAlumnos.append(alumno)
+            self.listadoAlumnos.extend(lista)
         elif isinstance(alumno, list):
             self.listadoAlumnos.extend(alumno)
 
@@ -26,6 +29,7 @@ class Grupo:
             self.listadoAlumnos.extend(estudiantes)
         else:
             print("La lista de estudiantes debe ser de tipo lista.")
+
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
