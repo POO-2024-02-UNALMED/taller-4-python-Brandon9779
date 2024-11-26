@@ -12,24 +12,22 @@ class Grupo:
         for x in kwargs.values():
             self._asignaturas.append(Asignatura(x, None))
 
-    def agregarAlumno(self, alumno, lista=None):
-        if lista is None:
-            lista = []
+    def agregarAlumno(self, alumno, *arg):
         if isinstance(alumno, str):
             self.listadoAlumnos.append(alumno)
-        elif isinstance(alumno, str) and isinstance(lista, list):
-            self.listadoAlumnos.append(alumno)
-            self.listadoAlumnos.extend(lista)
-        elif isinstance(alumno, list):
-            self.listadoAlumnos.extend(alumno)
+        if arg:
+            self.listadoAlumnos.extend(arg)
 
-    def agregarGrupo(self, nombre_grupo, estudiantes):
-        if isinstance(estudiantes, list):
-            self._grupo = nombre_grupo
-            self.listadoAlumnos.extend(estudiantes)
-        else:
-            print("La lista de estudiantes debe ser de tipo lista.")
-
+    def agregarGrupo(self, nombre_grupo, *arg):
+        self._grupo = nombre_grupo
+        for estudiantes in arg:
+            if isinstance(estudiantes, list):  
+                self.listadoAlumnos.extend(estudiantes)
+            elif isinstance(estudiantes, str): 
+                self.listadoAlumnos.append(estudiantes)
+            else:
+                print("Error: El argumento debe ser una lista de estudiantes o un solo estudiante.")
+    
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
