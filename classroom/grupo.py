@@ -20,13 +20,12 @@ class Grupo:
         elif isinstance(alumno, list):
             self.listadoAlumnos.extend(alumno)
 
-    def agregarGrupo(self, grupo):
-        if isinstance(grupo, Grupo):
-            self.listadoAlumnos.extend(grupo.listadoAlumnos)
-            self._asignaturas.extend(grupo._asignaturas)
+    def agregarGrupo(self, nombre_grupo, estudiantes):
+        if isinstance(estudiantes, list):
+            self._grupo = nombre_grupo
+            self.listadoAlumnos.extend(estudiantes)
         else:
-            print("El objeto proporcionado no es una instancia de Grupo.")
-
+            print("La lista de estudiantes debe ser de tipo lista.")
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
