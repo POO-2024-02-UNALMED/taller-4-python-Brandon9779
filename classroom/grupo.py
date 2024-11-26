@@ -12,12 +12,11 @@ class Grupo:
         for nombre_asignatura in kwargs.values():
             self._asignaturas.append(Asignatura(nombre_asignatura, None))
 
-    def agregarAlumno(self, alumno, *args):
+    def agregarAlumno(self, alumno, otrosAlumnos=None):
         if isinstance(alumno, str):
             self.listadoAlumnos.append(alumno)
-        for extra_alumnos in args:
-            if isinstance(extra_alumnos, list):
-                self.listadoAlumnos.extend(extra_alumnos)
+        if otrosAlumnos and isinstance(otrosAlumnos, list):
+            self.listadoAlumnos.extend(otrosAlumnos)
 
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
