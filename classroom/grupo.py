@@ -22,16 +22,13 @@ class Grupo:
                 elif isinstance(estudiante, list):
                     self.listadoAlumnos.extend(estudiante)
 
-    def agregarGrupo(self, nombre_grupo, *arg):
+    def agregarGrupo(self, nombre_grupo, asignaturas=None, estudiantes=None):
         self._grupo = nombre_grupo
-        for estudiante in arg:
-            if isinstance(estudiante, str):
-                self.listadoAlumnos.append(estudiante)
-            elif isinstance(estudiante, list):
-                self.listadoAlumnos.extend(estudiante)
-            else:
-                print("Error: El argumento debe ser una lista de estudiantes o un solo estudiante.")
-    
+        if asignaturas:
+            self._asignaturas.extend(asignaturas)
+        if estudiantes:
+            self.listadoAlumnos.extend(estudiantes)
+
     @classmethod
     def asignarNombre(cls, nombre="Grado 6"):
         cls.grado = nombre
