@@ -16,15 +16,19 @@ class Grupo:
         if isinstance(alumno, str):
             self.listadoAlumnos.append(alumno)
         if arg:
-            self.listadoAlumnos.extend(arg)
+            for estudiante in arg:
+                if isinstance(estudiante, str):
+                    self.listadoAlumnos.append(estudiante)
+                elif isinstance(estudiante, list):
+                    self.listadoAlumnos.extend(estudiante)
 
     def agregarGrupo(self, nombre_grupo, *arg):
         self._grupo = nombre_grupo
-        for estudiantes in arg:
-            if isinstance(estudiantes, list):  
-                self.listadoAlumnos.extend(estudiantes)
-            elif isinstance(estudiantes, str): 
-                self.listadoAlumnos.append(estudiantes)
+        for estudiante in arg:
+            if isinstance(estudiante, str):
+                self.listadoAlumnos.append(estudiante)
+            elif isinstance(estudiante, list):
+                self.listadoAlumnos.extend(estudiante)
             else:
                 print("Error: El argumento debe ser una lista de estudiantes o un solo estudiante.")
     
