@@ -22,12 +22,18 @@ class Grupo:
                 elif isinstance(estudiante, list):
                     self.listadoAlumnos.extend(estudiante)
 
-    def agregarGrupo(self, grupo, asignaturas=None, lista_alumnos=None):
+    def agregarGrupo(self, grupo, asignaturas=None, alumnos = None, *arg):
         self._grupo = grupo
         if asignaturas:
           self._asignaturas.extend(asignaturas)
-        if lista_alumnos:
-          self.listadoAlumnos.extend(lista_alumnos)
+        if isinstance(alumnos, str):
+            self.listadoAlumnos.append(alumnos)
+        if arg:
+            for estudiante in arg:
+                if isinstance(estudiante, str):
+                    self.listadoAlumnos.append(estudiante)
+                elif isinstance(estudiante, list):
+                    self.listadoAlumnos.extend(estudiante)
 
 
     @classmethod
